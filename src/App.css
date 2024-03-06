@@ -83,3 +83,31 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #0056b3;
 }
+
+.table-container {
+  font-family: Arial, sans-serif;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #2b2525;
+}
+
+td {
+  vertical-align: top;
+}
+
+.stars-container {
+  display: flex;
+  align-items: center;
+}
