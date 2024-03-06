@@ -21,6 +21,7 @@ const Seller = () => {
           product_description: formData.get("product_description") ?? "",
           //   product_image: formData.get("product_image") ?? "",
           product_price: formData.get("product_price") ?? "",
+          showReviewSection: false,
           created_at: Date.now(),
         };
         const product_image = formData.get("product_image");

@@ -36,7 +36,7 @@ const Buyer = () => {
   const toggleReviewSection = (productId) => {
     setProducts((prevProducts) =>
       prevProducts.map((product) =>
-        product.id === productId
+        product.product_id === productId
           ? { ...product, showReviewSection: !product.showReviewSection }
           : product
       )
