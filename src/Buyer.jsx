@@ -3,10 +3,17 @@ import { useState, useEffect } from "react";
 import "./Buyer.css";
 import Review from "./Review";
 import { db } from "./config/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import Webapi from "./web3api";
 const Buyer = () => {
   const [products, setProducts] = useState([]);
+
   const fetchData = async () => {
     const querySnapshot = await getDocs(collection(db, "products"));
     const userDataArray = querySnapshot.docs.map((doc) => ({
@@ -22,9 +29,30 @@ const Buyer = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  const update = async (seller_name) => {
+    const q = query(
+      collection(db, "Sellers"),
+      where("seller_name", "==", seller_name)
+    );
 
-  const handleBuy = (productId) => {
+    // Execute the query
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      // Get the first document from the query result
+      const docRef = querySnapshot.docs[0].ref;
+      const userData = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+      }));
+      await updateDoc(docRef, {
+        seller_name: seller_name,
+        count: userData[0].count + 1,
+      });
+    }
+  };
+  const handleBuy = async (productId, seller_name) => {
     // Implement logic for buying the product
+    update(seller_name);
     alert(`Product with ID ${productId} has been bought!`);
   };
 
@@ -73,7 +101,9 @@ const Buyer = () => {
               <div className="product-actions">
                 <button
                   className="buy-button"
-                  onClick={() => handleBuy(product.product_id)}
+                  onClick={() =>
+                    handleBuy(product.product_id, product.seller_name)
+                  }
                 >
                   Buy
                 </button>
