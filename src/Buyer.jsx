@@ -96,7 +96,7 @@ const Buyer = () => {
                   alt="image"
                   className="image"
                 />
-                <span className="product-price">${product.product_price}</span>
+                <span className="product-price">₹{product.product_price}</span>
                 <span className="product-description">{product.product_description}</span>
               </div>
               <div className="product-actions">
