@@ -6,29 +6,7 @@ import { db } from "./config/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import Webapi from "./web3api";
 const Buyer = () => {
-  const [products, setProducts] = useState([
-    // {
-    //   id: 1,
-    //   name: "Product 1",
-    //   price: 10,
-    //   reviews: [],
-    //   showReviewSection: false,
-    // },
-    // {
-    //   id: 2,
-    //   name: "Product 2",
-    //   price: 20,
-    //   reviews: [],
-    //   showReviewSection: false,
-    // },
-    // {
-    //   id: 3,
-    //   name: "Product 3",
-    //   price: 30,
-    //   reviews: [],
-    //   showReviewSection: false,
-    // },
-  ]);
+  const [products, setProducts] = useState([]);
   const fetchData = async () => {
     const querySnapshot = await getDocs(collection(db, "products"));
     const userDataArray = querySnapshot.docs.map((doc) => ({
@@ -80,32 +58,40 @@ const Buyer = () => {
       <h2>Products for Sale</h2>
       <ul className="product-list">
         {products.map((product) => (
-          <li key={product.product_id} className="product-item">
-            <div className="product-info">
-              <span className="product-name">{product.product_name}</span>
-              <span className="product-price">${product.product_price}</span>
-            </div>
-            <div className="product-actions">
-              <button
-                className="buy-button"
-                onClick={() => handleBuy(product.product_id)}
-              >
-                Buy
-              </button>
-              <button
-                className="add-review-button"
-                onClick={() => toggleReviewSection(product.product_id)}
-              >
-                {product.showReviewSection ? "Cancel" : "Add Review"}
-              </button>
-            </div>
-            {product.showReviewSection && (
-              <Review
-                productId={product.product_id}
-                onReviewSubmit={handleReviewSubmit}
-              />
-            )}
-          </li>
+          <div key={product.product_id}>
+            <div>Seller:{product.seller_name}</div>
+            <li key={product.product_id} className="product-item">
+              <div className="product-info">
+                <span className="product-name">{product.product_name}</span>
+                <img
+                  src={product.product_image_url}
+                  alt="image"
+                  className="image"
+                />
+                <span className="product-price">${product.product_price}</span>
+              </div>
+              <div className="product-actions">
+                <button
+                  className="buy-button"
+                  onClick={() => handleBuy(product.product_id)}
+                >
+                  Buy
+                </button>
+                <button
+                  className="add-review-button"
+                  onClick={() => toggleReviewSection(product.product_id)}
+                >
+                  {product.showReviewSection ? "Cancel" : "Add Review"}
+                </button>
+              </div>
+              {product.showReviewSection && (
+                <Review
+                  productId={product.product_id}
+                  onReviewSubmit={handleReviewSubmit}
+                />
+              )}
+            </li>
+          </div>
         ))}
       </ul>
       <Webapi seller_name="Ayush" />

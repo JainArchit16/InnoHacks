@@ -45,3 +45,16 @@
     color: white;
   }
   
+  .image{
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 100px;
+    width: 100px;
+  }
+  .product-info{
+    display: flex;
+    align-items: center;
+  }
+  .sellerName{
+    display: block;
+  }
