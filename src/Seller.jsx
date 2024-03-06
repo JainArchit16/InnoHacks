@@ -46,18 +46,34 @@ const Seller = () => {
         setDb(obj);
       }}
     >
-      <label htmlFor="seller_name">Seller Name:</label>
-      <input type="text" id="seller_name" name="seller_name" />
-      <label htmlFor="product_id">Product Id</label>
-      <input type="text" id="product_id" name="product_id" />
-      <label htmlFor="product_name">Product Name</label>
-      <input type="text" id="product_name" name="product_name" />
-      <label htmlFor="product_description">Product Description</label>
-      <input type="text" id="product_description" name="product_description" />
-      <label htmlFor="product_image">Product Image</label>
-      <input type="file" name="product_image" id="product_image" />
-      <label htmlFor="product_price">Product Price</label>
-      <input type="text" id="product_price" name="product_price" />
+      <div>
+        <label htmlFor="seller_name">Seller Name:</label>
+        <input type="text" id="seller_name" name="seller_name" />
+      </div>
+      <div>
+        <label htmlFor="product_id">Product Id</label>
+        <input type="text" id="product_id" name="product_id" />
+      </div>
+      <div>
+        <label htmlFor="product_name">Product Name</label>
+        <input type="text" id="product_name" name="product_name" />
+      </div>
+      <div>
+        <label htmlFor="product_description">Product Description</label>
+        <input
+          type="text"
+          id="product_description"
+          name="product_description"
+        />
+      </div>
+      <div>
+        <label htmlFor="product_image">Product Image</label>
+        <input type="file" name="product_image" id="product_image" />
+      </div>
+      <div>
+        <label htmlFor="product_price">Product Price</label>
+        <input type="text" id="product_price" name="product_price" />
+      </div>
       <input type="submit" value="Submit" />
     </form>
   );
