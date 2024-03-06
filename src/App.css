@@ -111,3 +111,12 @@ td {
   display: flex;
   align-items: center;
 }
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-info > * {
+  margin-bottom: 10px; /* Adjust as needed */
+}
