@@ -49,15 +49,15 @@ const Webapi = ({ seller_name }) => {
                   ))}
                 </td>
                 <td>
-                <div>
-            <ReactStars
-              count={5}
-              value={parseFloat(rating.averageRating)}
-              size={20}
-              edit={false}
-              color2={"#ffd700"} // Color for filled stars
-            />
-          </div>
+                  <div>
+                    <ReactStars
+                      count={5}
+                      value={parseFloat(rating.averageRating)}
+                      size={20}
+                      edit={false}
+                      color2={"#ffd700"} // Color for filled stars
+                    />
+                  </div>
                 </td>
               </tr>
             </tbody>
